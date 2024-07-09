@@ -40,11 +40,11 @@
   },
   "dependencies": {
     "config": "^3.3.12",
-    "debug": "^4.3.6",
+    "debug": "^4.3.7",
     "drachtio-srf": "^4.5.40",
     "eslint-plugin-promise": "^7.1.0",
     "lodash": "^4.17.21",
-    "pino": "^9.3.2",
+    "pino": "^9.4.0",
     "redis": "^4.7.0",
     "rtpengine-client": "^0.4.12",
     "sdp-transform": "^2.14.2",
