@@ -1,0 +1,41 @@
+# Set LOCAL_IP=your_local_ip in .env
+services:
+  drachtio:
+    image: orgads/drachtio-server:0.8.26-rc6-ac
+    command: drachtio --cloud-deployment --loglevel debug
+    container_name: drachtio
+    environment:
+      LOCAL_IP: "*"
+      PUBLIC_IP: $LOCAL_IP
+    ports:
+      - "5060:5060/udp"
+    build:
+      context: drachtio-server
+      args:
+        - MYVERSION=0.8.26-rc6-ac
+      platforms:
+      - "linux/amd64"
+      - "linux/arm64"
+
+  rtpengine:
+    image: orgads/rtpengine:12.4.1.7
+    command: rtpengine --port-min 40000 --port-max 60000 --log-level 6
+    container_name: rtpengine
+    network_mode: host
+    environment:
+      LOCAL_IP:
+    volumes:
+      - ./rec/blob:/rec
+    build:
+      context: docker-rtpengine
+      platforms:
+      - "linux/amd64"
+      - "linux/arm64"
+
+  siprec:
+    image: drachtio-siprec-server:latest
+    build:
+      context: drachtio-siprec-recording-server
+    environment:
+      - DEBUG=drachtio:siprec-recording-server
+    container_name: siprec
