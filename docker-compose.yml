@@ -18,7 +18,7 @@ services:
       - "linux/arm64"
 
   rtpengine:
-    image: orgads/rtpengine:12.4.1.7
+    image: orgads/rtpengine:12.4.1.8
     command: rtpengine --port-min 40000 --port-max 60000 --log-level 6
     container_name: rtpengine
     network_mode: host
@@ -34,8 +34,6 @@ services:
 
   siprec:
     image: drachtio-siprec-server:latest
-    build:
-      context: drachtio-siprec-recording-server
     environment:
       - DEBUG=drachtio:siprec-recording-server
     container_name: siprec
