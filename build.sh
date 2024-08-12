@@ -7,5 +7,6 @@ npm config set @ac-saas:registry https://artifactory.corp.audiocodes.com/artifac
 export PACKAGE_NAME=drachtio-siprec
 export NO_TESTS=1
 export DOCKER_COMPOSE_FILE=docker-compose.yml
+export BUILD_ARM=1
 
 npx -y -p @ac-saas/byoc-build@latest docker-build "$@"
