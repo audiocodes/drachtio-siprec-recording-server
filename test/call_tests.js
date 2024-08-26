@@ -1,7 +1,7 @@
 const test = require('blue-tape');
 const { exec } = require('child_process');
 const debug = require('debug')('drachtio:siprec-recording-server');
-const clearRequire = require('clear-require');
+const clearModule = require('clear-module');
 
 const execCmd = (cmd, opts) => {
   opts = opts || {} ;
@@ -65,10 +65,10 @@ test('siprec with rtpengine recorder', (t) => {
 test('siprec with multiple rtpengines', (t) => {
   t.timeoutAfter(20000);
 
-  clearRequire('..');
-  clearRequire('../lib/rtpengine-call-handler');
-  clearRequire('../lib/utils');
-  clearRequire('config');
+  clearModule('..');
+  clearModule('../lib/rtpengine-call-handler');
+  clearModule('../lib/utils');
+  clearModule('config');
   process.env.NODE_CONFIG_ENV = 'test3';
 
   const vmap = `-v ${__dirname}/scenarios:/tmp`;
@@ -96,20 +96,20 @@ test('siprec with multiple rtpengines', (t) => {
   }) ;
   test('siprec with freeswitch recorder', (t) => {
     t.timeoutAfter(20000);
-  
-    clearRequire('..');
-    clearRequire('../lib/utils');
-    clearRequire('config');
+
+    clearModule('..');
+    clearModule('../lib/utils');
+    clearModule('config');
     process.env.NODE_CONFIG_ENV = 'test2';
-  
+
     const vmap = `-v ${__dirname}/scenarios:/tmp`;
     const args = 'drachtio/sipp sipp -m 1 -sf /tmp/uac_siprec_pcap.xml drachtio';
     const cmd = `docker run -t --rm --net test_siprec ${vmap} ${args}`;
-  
+
     const srf = require('..');
     srf
       .on('connect', () => {
-  
+
         console.log(`cmd: ${cmd}`);
         execCmd(cmd)
           .then(() => {

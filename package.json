@@ -30,7 +30,7 @@
   "homepage": "https://github.com/drachtio/drachtio-siprec-recording-server#readme",
   "devDependencies": {
     "blue-tape": "^1.0.0",
-    "clear-require": "^2.0.0",
+    "clear-module": "^4.1.2",
     "fs-extra": "^11.2.0",
     "globals": "^15.9.0",
     "tap-spec": "^5.0.0",
@@ -40,7 +40,7 @@
     "config": "^3.3.12",
     "debug": "^4.3.6",
     "drachtio-srf": "^4.5.40",
-    "eslint": "^9.9.0",
+    "eslint": "^9.9.1",
     "eslint-plugin-promise": "^7.1.0",
     "lodash": "^4.17.21",
     "pino": "^9.3.2",
