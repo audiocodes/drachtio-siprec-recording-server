@@ -1,4 +1,5 @@
-FROM build-base
+ARG BASE_IMAGE=build-base
+FROM $BASE_IMAGE
 WORKDIR /usr/src/siprec
 ENV NODE_ENV=production
 COPY package*.json ./
