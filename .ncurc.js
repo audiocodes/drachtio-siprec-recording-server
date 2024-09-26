@@ -1,6 +1,6 @@
 module.exports = {
   target: (dependencyName) => {
-    if (dependencyName == 'tape')
+    if (['tape', 'clear-require'].includes(dependencyName))
       return 'minor';
     return 'latest';
   }
